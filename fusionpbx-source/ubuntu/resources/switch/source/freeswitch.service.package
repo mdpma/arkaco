@@ -24,6 +24,7 @@ LimitNPROC=60000
 LimitSTACK=250000
 LimitRTPRIO=infinity
 LimitRTTIME=infinity
+;the below parameters are commented because /usr/share/freeswitch/scripts will not be made by these parametersin a container environment:
 ;IOSchedulingClass=realtime
 ;IOSchedulingPriority=2
 ;CPUSchedulingPolicy=rr
