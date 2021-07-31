@@ -7,7 +7,7 @@
 #apt-get install -y git lsb-release
 
 #get the install script
-cd /usr/src && git clone https://github.com/mdpma/arkaco/fusionpbx-install.git
+cd /usr/src && git clone https://github.com/mdpma/arkaco.git
 
 #change the working directory
 cd /usr/src/fusionpbx-install/ubuntu
