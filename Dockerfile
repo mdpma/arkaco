@@ -4,7 +4,7 @@ LABEL Author="Mojtaba Dehghani, Behrouz Varzande @ ArkaPro.ir"
 LABEL App="FusionPBX"
 LABEL Version="v1.4"
 
-#ARG DEBIAN_FRONTEND=noninteractive
+ARG DEBIAN_FRONTEND=noninteractive
 
 #Pre-install packages if you use container
 RUN apt-get update \
@@ -41,8 +41,11 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY start-freeswitch.sh /usr/bin/start-freeswitch.sh
 
 #Install FusionPBX on Ubuntu 20.04
-RUN wget -O - https://raw.githubusercontent.com/mdpma/arkaco/master/fusionpbx-source/ubuntu/pre-install.sh | sh \ 
-&& cd /usr/src/arkaco/fusionpbx-source/ubuntu && ./install.sh                                                         
+RUN wget -O - https://raw.githubusercontent.com/mdpma/arkaco/master/fusionpbx-source/ubuntu/pre-install.sh | sh \
+&& cd /usr/src/arkaco/fusionpbx-source/ubuntu \
+&& chmod -R 755 /usr/src/arkaco \
+&& ./install.sh
+                                                       
 # Open the container up to the world.
 # Freeswitch ports and protocols guide : https://freeswitch.org/confluence/display/FREESWITCH/Firewall
 EXPOSE 9001 
