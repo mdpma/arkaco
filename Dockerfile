@@ -42,7 +42,7 @@ COPY start-freeswitch.sh /usr/bin/start-freeswitch.sh
 
 #Install FusionPBX on Ubuntu 20.04
 RUN wget -O - https://raw.githubusercontent.com/mdpma/arkaco/master/fusionpbx-source/ubuntu/pre-install.sh | sh \ 
-&& cd /usr/src/fusionpbx-install.sh/ubuntu && ./install.sh                                                         
+&& cd /usr/src/arkaco/fusionpbx-source/ubuntu && ./install.sh                                                         
 # Open the container up to the world.
 # Freeswitch ports and protocols guide : https://freeswitch.org/confluence/display/FREESWITCH/Firewall
 EXPOSE 9001 
