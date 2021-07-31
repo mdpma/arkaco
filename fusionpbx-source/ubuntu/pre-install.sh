@@ -10,4 +10,4 @@
 cd /usr/src && git clone https://github.com/mdpma/arkaco.git
 
 #change the working directory
-cd /usr/src/fusionpbx-install/ubuntu
+cd /usr/src/arkaco/fusionpbx-source/ubuntu
