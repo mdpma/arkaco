@@ -10,7 +10,7 @@ LABEL Version="v1.4"
 RUN apt-get update \
 && apt-get upgrade -y \
 && apt-get install -y dialog apt-utils \
-&& apt-get install -y git lsb-release
+&& apt-get install -y git lsb-release \
 && apt-get install -y systemd \
 && apt-get install -y systemd-sysv \
 && apt-get install -y ca-certificates \
@@ -27,8 +27,8 @@ RUN apt-get update \
 && apt-get install -y python3-pip \
 && apt-get install -y perl \
 && apt-get install memcached haveged  libmemcached-tools -y \
-&& apt-get install -y iptables 
-&& /etc/init.d/memcached start \ 
+&& apt-get install -y iptables \
+&& /etc/init.d/memcached start  
 #&& systemctl enable memchached
 
 #install erlang
