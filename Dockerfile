@@ -2,7 +2,7 @@
 FROM ubuntu:20.04
 LABEL Author="Mojtaba Dehghani, Behrouz Varzande @ ArkaPro.ir"
 LABEL App="FusionPBX"
-LABEL Version="v1.4"
+LABEL Version="v1.5"
 
 ARG DEBIAN_FRONTEND=noninteractive
 
