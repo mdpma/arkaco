@@ -24,10 +24,10 @@ LimitNPROC=60000
 LimitSTACK=250000
 LimitRTPRIO=infinity
 LimitRTTIME=infinity
-IOSchedulingClass=realtime
-IOSchedulingPriority=2
-CPUSchedulingPolicy=rr
-CPUSchedulingPriority=89
+;IOSchedulingClass=realtime
+;IOSchedulingPriority=2
+;CPUSchedulingPolicy=rr
+;CPUSchedulingPriority=89
 UMask=0007
 
 ; alternatives which you can enforce by placing a unit drop-in into
