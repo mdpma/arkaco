@@ -30,7 +30,7 @@ echo "rocommunity public" > /etc/snmp/snmpd.conf
 service snmpd restart
 
 #IPTables
-resources/iptables.sh
+#resources/iptables.sh
 
 #sngrep
 resources/sngrep.sh
