@@ -61,10 +61,11 @@ EXPOSE 5066/tcp 7443/tcp
 EXPOSE 2855-2856/tcp 	
 #EXPOSE 8021/tcp >> 8021 is for ESL that is a security risk when publishing to the world
 #EXPOSE 64535-65535/udp >> We do not open rtp ports because of the Docker limitation
-# on port ranges. instead we use Docker host iptables to pass RTP port ranges as following:
-#sudo iptables -A DOCKER -t nat -p udp -m udp ! -i docker0 --dport 60535:65535 -j DNAT --to-destination CONTAINER_IP/32:60535-65535
-#sudo iptables -A DOCKER -p udp -m udp -d CONTAINER_IP/32 ! -i docker0 -o docker0 --dport 60535:65535 -j ACCEPT
-#sudo iptables -A POSTROUTING -t nat -p udp -m udp -s CONTAINER_IP/32 -d CONTAINER_IP/32 --dport 60535:65535 -j MASQUERADE
+# on port ranges. instead we use Docker host iptables to pass RTP port ranges as follows:
+#iptables -t nat -A DOCKER -p udp -m multiport --dport 16384:32768 -j DNAT --to-destination 1CONTAINER_IP_ADDRESS:16384-32768
+#iptables -t nat -A POSTROUTING -j MASQUERADE -p tcp --source CONTAINER_IP_ADDRESS --destination CONTAINER_IP_ADDRESS --dport 16384:32768
+#iptables -A DOCKER -j ACCEPT -p udp --destination CONTAINER_IP_ADDRESS --dport 16384:32768
+
 
 #RUN chmod 755 /etc/supervisor/conf.d/supervisord.conf \
 #&& chmod 755 usr/bin/start-freeswitch.sh 
