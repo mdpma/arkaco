@@ -66,11 +66,22 @@ EXPOSE 2855-2856/tcp
 #iptables -t nat -A POSTROUTING -j MASQUERADE -p tcp --source CONTAINER_IP_ADDRESS --destination CONTAINER_IP_ADDRESS --dport 16384:32768
 #iptables -A DOCKER -j ACCEPT -p udp --destination CONTAINER_IP_ADDRESS --dport 16384:32768
 
+#If you want to change RTP port ranges you need to modify "RTP Port Range" in /etc/freeswitch/autoload_configs/switch.conf.xml
 
 #RUN chmod 755 /etc/supervisor/conf.d/supervisord.conf \
 #&& chmod 755 usr/bin/start-freeswitch.sh 
 
-#We do not declare volumes here, because the docker will name them randomly.
-#We will create volumes when passing "docker container run -d" command using -v or --volume.
+#We do not create volumes here using docker file, because the docker will name them randomly.
+#We will create volumes at the time of making fusionpbx container: "docker container run -d" command using -v or --volume, as follows:
+# " docker run -d  \
+# --name FUSIONPBX_CONTAINER_NAME \
+# -p 80:80 -p 443:443 -p 2855:2855 -p 2856:2856 -p 9001:9001 -p 5060:5060/tcp -p 5060:5060/udp -p 5070:5070/tcp -p 5070:5070/udp -p 5080:5080/tcp -p 5080:5080/udp -p 7443:7443/tcp \
+# -v psdb-msr:/var/lib/postgresql \
+# -v etcfs-msr:/etc/freeswitch \
+# -v varlibfs-msr:/var/lib/freeswitch \
+# -v usrsharefs-msr:/usr/share/freeswitch \
+# -v fusionweb-msr:/var/www/fusionpbx \
+# FUSIONPBX_IMAGE:VERSION
+
 #VOLUME ["/var/lib/postgresql", "/etc/freeswitch", "/var/lib/freeswitch", "/usr/share/freeswitch", "/var/www/fusionpbx"]
 CMD /usr/bin/supervisord -n
