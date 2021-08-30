@@ -1,4 +1,4 @@
-#FusionPBX Docker Image 
+#FusionPBX Docker File 
 FROM ubuntu:20.04
 LABEL Author="Mojtaba Dehghani, Behrouz Varzande @ ArkaPro.ir"
 LABEL App="FusionPBX"
