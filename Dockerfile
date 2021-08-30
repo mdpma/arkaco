@@ -86,6 +86,10 @@ EXPOSE 2855-2856/tcp
 # -v fusionweb-msr:/var/www/fusionpbx \
 # FUSIONPBX_IMAGE:VERSION
 
+#IMPORTANT NOTE:
+#After running Fusionpbx container you need to reset web admin password. guide to reset admin password:https://docs.fusionpbx.com/en/latest/additional_information/password_reset.html
+#And you need to copy datebase password from /etc/fusionpbx/config.lua.original in the database information section (database.system and database.switch) and replace it with the database password in the same section in /etc/fusionpbx/config.lua
+
 #If you want to create volume using the docker file, use the below command:
 #VOLUME ["/var/lib/postgresql", "/etc/freeswitch", "/var/lib/freeswitch", "/usr/share/freeswitch", "/var/www/fusionpbx"]
 
