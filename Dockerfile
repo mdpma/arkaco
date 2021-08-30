@@ -49,7 +49,10 @@ RUN wget -O - https://raw.githubusercontent.com/mdpma/arkaco/master/fusionpbx-so
 
 RUN mv /etc/fusionpbx/config.lua /etc/fusionpbx/config.lua.original \
 && cp /usr/local/src/config.lua /etc/fusionpbx \
-&& chmod 664 /etc/fusionpbx/config.lua
+&& chmod 664 /etc/fusionpbx/config.lua \
+&& cp -R /var/www/fusionpbx/app/scripts/resources/scripts/* /usr/share/freeswitch/scripts/ \
+&& cd /usr/share/freeswitch/scripts/ \
+&& chown -R www-data:www-data * 
 
 # Open the container up to the world.
 # Freeswitch ports and protocols guide : https://freeswitch.org/confluence/display/FREESWITCH/Firewall
@@ -83,5 +86,7 @@ EXPOSE 2855-2856/tcp
 # -v fusionweb-msr:/var/www/fusionpbx \
 # FUSIONPBX_IMAGE:VERSION
 
+#If you want to create volume using the docker file, use the below command:
 #VOLUME ["/var/lib/postgresql", "/etc/freeswitch", "/var/lib/freeswitch", "/usr/share/freeswitch", "/var/www/fusionpbx"]
+
 CMD /usr/bin/supervisord -n
